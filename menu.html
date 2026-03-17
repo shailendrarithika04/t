@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tara Menu | Food & Mocktails</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f0f0f; color: #fff; }
+        .menu-card { background: #1a1a1a; border: 1px solid #333; transition: 0.3s; }
+        .menu-card:hover { border-color: #d4af37; }
+    </style>
+</head>
+<body>
+    <nav class="flex justify-between p-8 border-b border-gray-900">
+        <h1 class="text-2xl font-bold text-yellow-600">TARA</h1>
+        <div class="space-x-6">
+            <a href="index.html">Home</a>
+            <a href="menu.html" class="text-yellow-600">Menu</a>
+            <a href="cart.html">Cart</a>
+        </div>
+    </nav>
+
+    <main class="p-12">
+        <h2 class="text-4xl text-center mb-12 italic">Our Curated Selection</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="menu-card p-4 rounded">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=400" class="w-full h-48 object-cover mb-4">
+                <div class="flex justify-between italic">
+                    <span>Velvet Sunset Mocktail</span>
+                    <span class="text-yellow-500">$14</span>
+                </div>
+                <div class="text-xs text-yellow-600 my-2">★★★★★ (4.9)</div>
+                <button onclick="addToCart('Velvet Sunset', 14)" class="w-full mt-4 py-2 border border-gray-700 text-xs hover:bg-yellow-600 hover:text-black transition">ADD TO ORDER</button>
+            </div>
+
+            <div class="menu-card p-4 rounded">
+                <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=400" class="w-full h-48 object-cover mb-4">
+                <div class="flex justify-between italic">
+                    <span>Truffle Burrata Pasta</span>
+                    <span class="text-yellow-500">$28</span>
+                </div>
+                <div class="text-xs text-yellow-600 my-2">★★★★☆ (4.7)</div>
+                <button onclick="addToCart('Truffle Burrata', 28)" class="w-full mt-4 py-2 border border-gray-700 text-xs hover:bg-yellow-600 hover:text-black transition">ADD TO ORDER</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('tara_cart')) || [];
+            cart.push({name, price});
+            localStorage.setItem('tara_cart', JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+    </script>
+</body>
+</html>
